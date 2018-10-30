@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - aws cloudformation package --template-file setup-es-kibana.yaml --s3-bucket es-lex-codepipelinebucket-1biytzgx1of5v
-                                   --output-template-file outputSamTemplate.yaml
+                                   --output-template-file outputSamTemplate.yaml --parameters  ParameterKey=Username,ParameterValue='esuser' --parameter ParameterKey=Password,ParameterValue='Test123445'
 artifacts:
   type: zip
   files:
