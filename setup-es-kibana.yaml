@@ -10,12 +10,14 @@ Parameters:
     Type: String
     AllowedPattern: ^(?=\s*\S).*$
     ConstraintDescription: ' cannot be empty'
+    Default: esuser
   Password:
     Description: Password of the Kibana Dashboard user
     Type: String
     NoEcho: true
     AllowedPattern: '^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$'
     ConstraintDescription: ' must be at least 6 alpha-numeric characters and contain at least one number'
+    Default: 'Test12345'
   EsDomainName: 
     Type: String
     Default: es-domain
