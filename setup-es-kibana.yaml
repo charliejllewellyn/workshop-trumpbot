@@ -1,4 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
 
 Description: >-
   This template creates an Elasticsearch domain and provides access to a Kibana dashboard,
