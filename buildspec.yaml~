@@ -1,0 +1,12 @@
+
+version: 0.1
+phases:
+  install:
+    commands:
+      - aws cloudformation package --template-file  --s3-bucket es-lex-codepipelinebucket-1biytzgx1of5v
+                                   --output-template-file outputSamTemplate.yaml
+artifacts:
+  type: zip
+  files:
+    - samTemplate.yaml
+    - outputSamTemplate.yaml
