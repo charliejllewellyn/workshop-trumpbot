@@ -70,6 +70,9 @@ Resources:
             Events: s3:ObjectCreated:*
       Timeout: 60
       AutoPublishAlias: live
+      Environment:
+        Variables:
+          ES_ENDPOINT: !GetAtt ElasticsearchDomain.DomainEndpoint
 
   ElasticsearchDomain: 
     Type: AWS::Elasticsearch::Domain
