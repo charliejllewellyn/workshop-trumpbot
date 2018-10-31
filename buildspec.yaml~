@@ -3,10 +3,10 @@ version: 0.1
 phases:
   install:
     commands:
-      - aws cloudformation package --template-file  --s3-bucket es-lex-codepipelinebucket-1biytzgx1of5v
+      - aws cloudformation package --template-file setup-es-kibana.yaml --s3-bucket eslex-codepipelinebucket-wtaxzw8yph3w
                                    --output-template-file outputSamTemplate.yaml
 artifacts:
   type: zip
   files:
-    - samTemplate.yaml
+    - setup-es-kibana.yaml
     - outputSamTemplate.yaml

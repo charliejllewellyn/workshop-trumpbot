@@ -1,4 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
 
 Description: >-
   This template creates an Elasticsearch domain and provides access to a Kibana dashboard,
@@ -10,12 +11,14 @@ Parameters:
     Type: String
     AllowedPattern: ^(?=\s*\S).*$
     ConstraintDescription: ' cannot be empty'
+    Default: esuser
   Password:
     Description: Password of the Kibana Dashboard user
     Type: String
     NoEcho: true
     AllowedPattern: '^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$'
     ConstraintDescription: ' must be at least 6 alpha-numeric characters and contain at least one number'
+    Default: 'Test12345'
   EsDomainName: 
     Type: String
     Default: es-domain
@@ -48,22 +51,28 @@ Metadata:
 
 Resources:
 
+  inputBucket:
+    Type: AWS::S3::Bucket
+
   trumpBotWorkshop:
     Type: AWS::Serverless::Function
     Properties:
       Handler: lambda_function.lambda_handler
-      Runtime: python3.6
+      Runtime: python2.7
       CodeUri: ./workshop-trumpbot-index-to-es
       Policies:
       - AmazonS3FullAccess
-        #Events:
-        #  MyTimeApi:
-        #    Type: S3
-        #    Properties:
-        #      Bucket: !Ref InputBucket
-        #      Events: s3:ObjectCreated:*
+      Events:
+        MyTimeApi:
+          Type: S3
+          Properties:
+            Bucket: !Ref inputBucket
+            Events: s3:ObjectCreated:*
       Timeout: 60
       AutoPublishAlias: live
+      Environment:
+        Variables:
+          ES_ENDPOINT: !Ref OutputBucket
 
   ElasticsearchDomain: 
     Type: AWS::Elasticsearch::Domain

@@ -1,9 +1,0 @@
-../docx2txt/docx2txt.py
-../docx2txt/__init__.py
-../docx2txt/docx2txt.pyc
-../docx2txt/__init__.pyc
-top_level.txt
-dependency_links.txt
-PKG-INFO
-SOURCES.txt
-../../../bin/docx2txt

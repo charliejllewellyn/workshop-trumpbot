@@ -3,7 +3,6 @@ import urllib
 import boto3
 import uuid
 
-import os
 import docx2txt
 import requests
 from requests_aws4auth import AWS4Auth
@@ -16,7 +15,7 @@ comprehend = boto3.client('comprehend')
 
 
 region = 'us-east-1' ## Replace with your own region
-host = os.environ.get('ES_ENDPOINT') ## Replace with your own elasticsearch domain, INCLUDE https://
+host = 'https://search-trumpbot-workshop-ficalrtxnoxpxq2nohq6snp5na.us-east-1.es.amazonaws.com' ## Replace with your own elasticsearch domain, INCLUDE https://
 index = 'speech-v1' ## Replace with your own elasticsearch index
 service = 'es'
 
