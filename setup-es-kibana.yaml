@@ -51,6 +51,9 @@ Metadata:
 
 Resources:
 
+  inputBucket:
+    Type: AWS::S3::Bucket
+
   trumpBotWorkshop:
     Type: AWS::Serverless::Function
     Properties:
@@ -59,12 +62,12 @@ Resources:
       CodeUri: ./workshop-trumpbot-index-to-es
       Policies:
       - AmazonS3FullAccess
-        #Events:
-        #  MyTimeApi:
-        #    Type: S3
-        #    Properties:
-        #      Bucket: !Ref InputBucket
-        #      Events: s3:ObjectCreated:*
+        Events:
+          MyTimeApi:
+            Type: S3
+            Properties:
+              Bucket: !Ref inputBucket
+              Events: s3:ObjectCreated:*
       Timeout: 60
       AutoPublishAlias: live
 
