@@ -16,7 +16,7 @@ comprehend = boto3.client('comprehend')
 
 
 region = 'us-east-1' ## Replace with your own region
-host = os.environ.get('ES_ENDPOINT') ## Replace with your own elasticsearch domain, INCLUDE https://
+host = 'https://' + os.environ.get('ES_ENDPOINT') ## Replace with your own elasticsearch domain, INCLUDE https://
 index = 'speech-v1' ## Replace with your own elasticsearch index
 service = 'es'
 
