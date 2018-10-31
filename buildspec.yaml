@@ -4,6 +4,7 @@ phases:
   install:
     commands:
       - pip install -r workshop-trumpbot-index-to-es/requirements.txt -t workshop-trumpbot-index-to-es/
+      - pip install -r worskshop-trumpbot-reply/requirements.txt -t worskshop-trumpbot-reply/
       - aws cloudformation package --template-file setup-es-kibana.yaml --s3-bucket eslex-codepipelinebucket-wtaxzw8yph3w
                                    --output-template-file outputSamTemplate.yaml
 artifacts:

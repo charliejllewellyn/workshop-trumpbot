@@ -74,6 +74,20 @@ Resources:
         Variables:
           ES_ENDPOINT: !GetAtt ElasticsearchDomain.DomainEndpoint
 
+  trumpBotWorkshop2:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python2.7
+      CodeUri: ./worskshop-trumpbot-reply
+      Policies:
+      - AmazonS3FullAccess
+      Timeout: 60
+      AutoPublishAlias: live
+      Environment:
+        Variables:
+          ES_ENDPOINT: !GetAtt ElasticsearchDomain.DomainEndpoint
+
   ElasticsearchDomain: 
     Type: AWS::Elasticsearch::Domain
     Properties:
